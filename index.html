@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentinel | Living System Health</title>
+    <link rel="stylesheet" href="css/organism.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!-- The visual organism lives here -->
+      <canvas id="organism-canvas"></canvas>
+
+      <!-- Minimalist Overlay -->
+      <div class="hud">
+        <h1>SENTINEL</h1>
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span id="status-text">CALM</span>
+        </div>
+
+        <!-- Hidden by default, toggleable for accessibility/debug -->
+        <div class="metrics-debug hidden">
+          <div class="metric">
+            <span>CPU</span> <span id="debug-cpu">0%</span>
+          </div>
+          <div class="metric">
+            <span>MEM</span> <span id="debug-mem">0%</span>
+          </div>
+          <div class="metric">
+            <span>ERR</span> <span id="debug-err">0</span>
+          </div>
+          <div class="metric">
+            <span>NET</span> <span id="debug-net">Low</span>
+          </div>
+        </div>
+
+        <button id="toggle-debug" aria-label="Toggle Numeric View">
+          show_data
+        </button>
+      </div>
+    </div>
+
+    <!-- System Modules -->
+    <script src="js/metric-simulator.js"></script>
+    <script src="js/mapper.js"></script>
+    <script src="js/visual-engine.js"></script>
+
+    <!-- Main Entry -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize System
+        const simulator = new MetricSimulator();
+        const mapper = new HealthMapper();
+        const startEngine = initVisualEngine("organism-canvas");
+
+        // Debug Elements
+        const debugEls = {
+          cpu: document.getElementById("debug-cpu"),
+          mem: document.getElementById("debug-mem"),
+          err: document.getElementById("debug-err"),
+          net: document.getElementById("debug-net"),
+          status: document.getElementById("status-text"),
+          container: document.querySelector(".metrics-debug"),
+        };
+
+        // Toggle Debug View
+        document
+          .getElementById("toggle-debug")
+          .addEventListener("click", () => {
+            debugEls.container.classList.toggle("hidden");
+          });
+
+        // Main Loop Configuration
+        const updateLoop = () => {
+          // 1. Get Simulated Data
+          const metrics = simulator.tick();
+
+          // 2. Map to Biological State
+          const bioState = mapper.map(metrics);
+
+          // 3. Update Visuals (The engine handles its own render loop, we just push state)
+          window.updateOrganismState(bioState);
+
+          // 4. Update HUD (Optional Numeric Fallback)
+          debugEls.cpu.innerText = Math.round(metrics.cpu) + "%";
+          debugEls.mem.innerText = Math.round(metrics.memory) + "%";
+          debugEls.err.innerText = metrics.errors;
+          debugEls.net.innerText = metrics.network.toFixed(2);
+          debugEls.status.innerText = bioState.statusLabel;
+
+          // Loop
+          setTimeout(updateLoop, 1000); // Update logic every second, animation is 60fps
+        };
+
+        // Start
+        updateLoop();
+      });
+    </script>
+  </body>
+</html>
