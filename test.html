@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel Test</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: monospace;
+            padding: 20px;
+        }
+        #status {
+            margin: 20px 0;
+            padding: 10px;
+            background: #1a1a1a;
+            border-left: 3px solid #00ff88;
+        }
+        .error { border-left-color: #ff3333; }
+        .success { border-left-color: #00ff88; }
+    </style>
+</head>
+<body>
+    <h1>Sentinel Module Test</h1>
+    <div id="status">Testing...</div>
+    <div id="results"></div>
+
+    <script src="js/metric-simulator.js"></script>
+    <script src="js/mapper.js"></script>
+    <script src="js/visual-engine.js"></script>
+
+    <script>
+        const statusEl = document.getElementById('status');
+        const resultsEl = document.getElementById('results');
+        
+        function log(msg, isError = false) {
+            const div = document.createElement('div');
+            div.textContent = msg;
+            div.style.padding = '5px';
+            div.style.color = isError ? '#ff3333' : '#00ff88';
+            resultsEl.appendChild(div);
+        }
+
+        try {
+            // Test 1: MetricSimulator
+            log('Testing MetricSimulator...');
+            const simulator = new MetricSimulator();
+            const metrics = simulator.tick();
+            log(`✓ MetricSimulator works: CPU=${metrics.cpu.toFixed(1)}%`);
+
+            // Test 2: HealthMapper
+            log('Testing HealthMapper...');
+            const mapper = new HealthMapper();
+            const bioState = mapper.map(metrics);
+            log(`✓ HealthMapper works: Status=${bioState.statusLabel}`);
+
+            // Test 3: Visual Engine
+            log('Testing Visual Engine...');
+            const canvas = document.createElement('canvas');
+            canvas.id = 'test-canvas';
+            document.body.appendChild(canvas);
+            initVisualEngine('test-canvas');
+            log('✓ Visual Engine initialized');
+
+            // Test 4: Update function
+            log('Testing updateOrganismState...');
+            if (typeof window.updateOrganismState === 'function') {
+                window.updateOrganismState(bioState);
+                log('✓ updateOrganismState function exists');
+            } else {
+                throw new Error('updateOrganismState not found');
+            }
+
+            statusEl.textContent = '✓ All tests passed!';
+            statusEl.className = 'success';
+
+        } catch (error) {
+            log(`✗ ERROR: ${error.message}`, true);
+            log(`Stack: ${error.stack}`, true);
+            statusEl.textContent = '✗ Tests failed - see errors below';
+            statusEl.className = 'error';
+        }
+    </script>
+</body>
+</html>
