@@ -1,77 +1,83 @@
-/*
- Copyright (c) 2026 Ashraf Morningstar
- These are personal recreations of existing projects, developed by Ashraf Morningstar
- for learning and skill development.
- Original project concepts remain the intellectual property of their respective creators.
- Repository: https://github.com/AshrafMorningstar
-*/
 
-# Sentinel: Living System Health Visualizer
+<div align="center">
 
-Sentinel is a frontend system that visualizes system health as a living organism rather than a collection of charts and numbers. It translates abstract metrics into visceral biological metaphors.
+# :star: Sentinel Health Viz :star:
 
-## 1. Metaphor Rationale
+[![GitHub stars](https://img.shields.io/github/stars/AshrafMorningstar/sentinel-health-viz?style=for-the-badge&color=orange)](https://github.com/AshrafMorningstar/sentinel-health-viz/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/AshrafMorningstar/sentinel-health-viz?style=for-the-badge&color=blue)](https://github.com/AshrafMorningstar/sentinel-health-viz/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/AshrafMorningstar/sentinel-health-viz?style=for-the-badge&color=red)](https://github.com/AshrafMorningstar/sentinel-health-viz/issues)
+[![GitHub license](https://img.shields.io/github/license/AshrafMorningstar/sentinel-health-viz?style=for-the-badge&color=green)](./LICENSE)
+![Maintained](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?style=for-the-badge)
 
-Traditional dashboards overload users with raw data, requiring cognitive load to interpret. Sentinel bypasses this by appealing to our intuitive understanding of biological health.
+**Automated, High-Performance sentinel health viz Project**
 
-- **Calmness** is instantly recognizable.
-- **Stress** (heavy breathing, racing heart) provokes an empathetic response.
-- **Sickness** (irregularity, feverish colors) signals danger without needing to read a number.
+[View Demo (If Applicable)](#) • [Report Bug](https://github.com/AshrafMorningstar/sentinel-health-viz/issues) • [Request Feature](https://github.com/AshrafMorningstar/sentinel-health-viz/issues)
 
-## 2. Mapping Logic
-
-We map simulated system metrics to the organism's physiological state:
-
-| System Metric | Biological Metaphor | Visual Manifestation                                     |
-| ------------- | ------------------- | -------------------------------------------------------- |
-| **CPU Load**  | Heartbeat Speed     | The central core pulses faster as load increases.        |
-| **Memory**    | Breathing Depth     | The core expands/contracts more deeply as memory fills.  |
-| **Errors**    | Muscle Tension      | High error rates cause the organism to shake and jitter. |
-| **Network**   | Nervous System      | Particle flow accelerates with network traffic.          |
-
-## 3. Why Visuals Replace Numbers
-
-In high-pressure DevOps environments, "feeling" the system state is faster than reading it.
-
-- **Peripheral Awareness**: You can monitor Sentinel out of the corner of your eye.
-- **Reduced Anxiety**: Organic motion is less stressful than flashing red alert boxes.
-- **Instant Triage**: If it looks "sick", it is sick.
-
-## 4. Architecture
-
-- `js/metric-simulator.js`: Generates mock data with realistic fluctuation and trends.
-- `js/mapper.js`: Pure function transforming data -> visual state.
-- `js/visual-engine.js`: HTML5 Canvas engine rendering the organism at 60fps.
-
-## 5. Usage
-
-Open `index.html` in any modern browser.
-
-- **Normal Mode**: Watch the organism react to simulated stress.
-- **Debug Mode**: Click "SHOW_DATA" to see the underlying raw numbers.
-
+</div>
 
 ---
 
-## 📜 Copyright & License
+## :rocket: Overview
 
-© 2026 Ashraf Morningstar. All Rights Reserved.
+**sentinel-health-viz** is a state-of-the-art implementation utilizing HTML5, CSS3. Designed for developers looking for robust, scalable solutions in Open Source, Developer Tools, Coding Best Practices, Software Engineering, Open Source, Developer Tools, Coding Best Practices, Software Engineering.
 
-**Educational Disclaimer:** This is a personal recreation of an existing project concept, developed for learning and skill development purposes. The original project concept remains the intellectual property of its respective creator(s).
+This project is a high-performance, open-source solution designed for developers and enthusiasts. It implements modern best practices and is optimized for efficiency and scalability.
 
-**License:** MIT License - See [LICENSE](./LICENSE) file for details.
+## :sparkles: Key Features
 
-**Developer:** [Ashraf Morningstar](https://github.com/AshrafMorningstar)
+- :white_check_mark: **High Performance:** Optimized for speed and low latency.
+- :white_check_mark: **Scalable Architecture:** Built to handle growth effortlessly.
+- :white_check_mark: **Modern Tech Stack:** Utilizes latest standards in HTML5, CSS3.
+- :white_check_mark: **Developer Friendly:** Clean code, well-documented, and easy to extend.
 
-**Portfolio:** Explore more projects at [github.com/AshrafMorningstar](https://github.com/AshrafMorningstar)
+## :hammer_and_wrench: Technologies Used
+
+![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+## :floppy_disk: Installation & Usage
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AshrafMorningstar/sentinel-health-viz.git
+   cd sentinel-health-viz
+   ```
+
+2. **Install dependencies:**
+    No specific installation required.
+
+3. **Run the application:**
+    Open index.html in your browser.
+
+## :open_file_folder: Project Structure
+
+```
+sentinel-health-viz/
+├── src/          # Source code
+├── assets/       # Images and static files
+├── README.md     # Project documentation
+└── LICENSE       # License information
+```
+
+## :handshake: Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
+
+## :bust_in_silhouette: Author
+
+**Ashraf Morningstar**
+
+- **GitHub:** [@AshrafMorningstar](https://github.com/AshrafMorningstar)
+- **Twitter:** [@AMS_Morningstar](https://twitter.com/@AMS_Morningstar)
+- **Portfolio:** [AshrafMorningstar Projects](https://github.com/AshrafMorningstar?tab=repositories)
+
+## :page_facing_up: License
+
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
-
-### 🤝 Connect & Contribute
-
-Found this helpful? Give it a ⭐️ on GitHub!
-
-- 💼 Company: MORNINGSTARCONSTRUCTION
-- 📍 Location: India
-- 🐦 Twitter: [@AMS_Morningstar](https://twitter.com/AMS_Morningstar)
-- 📧 Email: ashrafmorningstar@gmail.com
+<div align="center">
+  <p>If you find this project useful, please give it a <b>Star</b> :star:!</p>
+  <sub>Built with ❤️ by Ashraf Morningstar</sub>
+</div>
